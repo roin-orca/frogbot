@@ -1,0 +1,25 @@
+name: "Frogbot Scan Pull Request"
+on: [workflow_dispatch]
+
+permissions:
+  pull-requests: write
+  contents: read
+jobs:
+  scan-pull-request:
+    runs-on: ubuntu-latest
+    environment: frogbot
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "16.x"
+
+      - uses: jfrog/frogbot@v2
+        env:
+          JF_URL: "aaa"
+          JF_ACCESS_TOKEN: "bbb"
+          JF_GIT_TOKEN: "ccc"
