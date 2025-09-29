@@ -20,6 +20,6 @@ jobs:
 
       - uses: jfrog/frogbot@v2
         env:
-          JF_URL: "aaa"
+          JF_URL: "http://bla.com"
           JF_ACCESS_TOKEN: "bbb"
           JF_GIT_TOKEN: "ccc"
